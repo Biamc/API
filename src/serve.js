@@ -1,5 +1,7 @@
 require('express-async-errors')
 
+const database = require('./database/sqlite')
+
 const AppError = require('./utils/AppError')
 
 const express = require('express')
@@ -8,6 +10,8 @@ const routes = require('./routes')
 
 const app = express()
 app.use(express.json())// a nossa aplicação deve saber em qual formato as informações vao chegar, assim deve ser utilizado a função use, especificando qual tipo de arquivo está sendo utilizado
+
+database()
 
 app.use(routes)
 
