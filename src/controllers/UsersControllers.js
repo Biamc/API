@@ -1,10 +1,9 @@
-const { hash } = require('bcryptjs')
-
-const {compare} = require('bcryptjs')
 
 const AppError = require('../utils/AppError')
 
 const sqliteConection = require('../database/sqlite')
+
+const { hash, compare } = require('bcryptjs')
 
 class UsersController {
  /*
@@ -63,17 +62,19 @@ class UsersController {
       throw new AppError('Este e-mail já esta um uso')
     }
 
-    user.name = name
-    user.email = email
+    user.name = name ?? user.name // se existir conteúdo dentro de name, este (name) será utilizado, se não houver use o (user.name)
+    user.email = email ?? user.email
 
     if (password && !old_password){
       throw new AppError('você precisa informar a senha antiga')
     }
 
      if(password && old_password) {
-      const checkOldPassword = await compare(old_password, user.password)
+
+      const checkOldPassword = await compare (old_password, user.password)
+
       
-      if(checkOldPassword){
+      if(!checkOldPassword){
         throw new AppError('Asenha não confere')
       }
 
