@@ -18,6 +18,6 @@ const usersController = new UsersController()
 // usersRoutes.use(myMiddleware) //para aplicar o middleware em toda a aplicação
 // usersRoutes.post('/', myMiddleware, usersController.create)
 usersRoutes.post('/', usersController.create)
-
+usersRoutes.put('/:id', usersController.update)
 
 module.exports = usersRoutes //esta exportzando para quem utilizar este arquivo poder utilizar
