@@ -45,6 +45,10 @@ class UsersController {
 
   }
 
+  
+
+ 
+
   async update(request, response) {
     const {name, email, password, old_password} = request.body
     const {id} = request.params
@@ -99,8 +103,14 @@ class UsersController {
   }
 
 }
-
-
+// para ajudar a encontrar o erro em uma função
+// async update(req, res) {
+//   try {
+//       //todo o código da sua função update aqui dentro
+//   } catch (error) {
+//      console.error(error);
+//      return res.status(500).json({ error: 'Internal Server Error' });
+//   }
 
 
 module.exports = UsersController
