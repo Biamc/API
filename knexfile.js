@@ -1,6 +1,6 @@
 
 const path = require('path');//importação do path
-const connection = require('./src/database/knex');
+
 
 module.exports = {
 
